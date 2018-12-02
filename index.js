@@ -47,9 +47,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', function (req, res) {
-    res.sendFile('views/index.html', {
-        root: __dirname
-    });
+    res.json({ hello: 'world' });
 });
 
 app.post('/join', function (req, res) {
