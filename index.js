@@ -5,11 +5,16 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var fs = require('fs');
+var creds = '';
 
 var redis = require('redis');
 var client = '';
 
-    client = redis.createClient('redis://h:p58d2d8e2c4f6241a2b10be6105f7f64a6c66a5f66066ed644ecd0361ef7d9633@ec2-54-208-36-220.compute-1.amazonaws.com:53489');
+// Read credentials from JSON
+fs.readFile('creds.json', 'utf-8', function (err, data) {
+    if (err) throw err;
+    creds = JSON.parse(data);
+    client = redis.createClient('redis://' + creds.user + ':' + creds.password + '@' + creds.host + ':' + creds.port);
 
     // Redis Client Ready
     client.once('ready', function () {
@@ -31,6 +36,8 @@ var client = '';
             }
         });
     });
+});
+
 var port = process.env.PORT || 8080;
 
 // Start the Server

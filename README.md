@@ -1,12 +1,38 @@
-#ChatRoom
+# Chat App with Redis + Node + Socket.io
 
-ChatRoom with Node and socket.io
+This repository contains code for a chat application built using the following web technologies:
 
-## 简介
-通过node.js和socket.io实现的一个简单的聊天室，可以实现上下线广播，广播聊天和点对点聊天。
+- [Redis](https://redis.io/)
+- [Node.js](https://nodejs.org/en/)
+- [Express.js](http://expressjs.com/)
+- [Socket.IO](http://socket.io/)
 
-##安装运行
-    npm install
-    node app
-##使用
-输入[http://localhost:3000](http://localhost:3000)即可运行，弹出登录窗口，直接输入用户名即可，暂未加入用户管理功能。
+The original blog post can be found at the following link: [Link_Blog_Here](http://google.com)
+
+The Installation process assumes that you already have the above technologies installed on your machine.
+
+## Install
+
+Give download link here
+
+Navigate to the folder and run:
+
+```
+npm install
+```
+
+To start the server, you can run:
+
+```
+npm start
+```
+
+The server should start at port 8080 (default). Navigate to [http://localhost:8080](http://localhost:8080) to see the demo.
+
+Although, before doing that, you might want to flush the DB and start with 0 users.
+
+For that, you can uncomment the line in `index.js` that says `client.flushdb();`
+
+Once that is done, you are ready to go. Remember to restart the server if you intend to make any changes to the code.
+
+You can also use something like [nodemon](https://nodemon.io/) to watch your files and restart the server automatically!
