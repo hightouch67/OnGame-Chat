@@ -3,12 +3,14 @@ var bodyParser = require('body-parser');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var fs = require('fs');
-var redis = require('redis');
 
+var fs = require('fs');
+
+var redis = require('redis');
 var client = '';
 
     client = redis.createClient('redis://h:p58d2d8e2c4f6241a2b10be6105f7f64a6c66a5f66066ed644ecd0361ef7d9633@ec2-54-208-36-220.compute-1.amazonaws.com:53489');
+
     // Redis Client Ready
     client.once('ready', function () {
 
@@ -29,7 +31,6 @@ var client = '';
             }
         });
     });
-
 var port = process.env.PORT || 8080;
 
 // Start the Server
@@ -51,7 +52,9 @@ app.use(bodyParser.urlencoded({
 
 // Render Main HTML file
 app.get('/', function (req, res) {
-    res.json({ hello: 'world' });
+    res.sendFile('views/index.html', {
+        root: __dirname
+    });
 });
 
 // API - Join Chat
