@@ -20,7 +20,7 @@ fs.readFile('creds.json', 'utf-8', function (err, data) {
     client.once('ready', function () {
 
         // Flush Redis DB
-        // client.flushdb();
+         client.flushdb();
 
         // Initialize Chatters
         client.get('chat_users', function (err, reply) {
