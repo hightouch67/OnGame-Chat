@@ -111,11 +111,15 @@ app.post('/leave', function (req, res) {
 
 // API - Send + Store Message
 app.post('/send_message', function (req, res) {
+    var room = req.body.username;
     var username = req.body.username;
     var message = req.body.message;
+    var date = new Date().toUTCString()
     chat_messages.push({
+        'room':room,
         'sender': username,
-        'message': message
+        'message': message,
+        'date':date
     });
     client.set('chat_app_messages', JSON.stringify(chat_messages));
     res.send({
