@@ -76,7 +76,7 @@ app.post('/leave', function (req, res) {
 });
 
 app.post('/send_message', function (req, res) {
-    var room = req.body.username;
+    var room = req.body.room;
     var username = req.body.username;
     var message = req.body.message;
     var date = new Date().toUTCString()
