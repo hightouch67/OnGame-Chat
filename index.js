@@ -11,7 +11,7 @@ client = redis.createClient(process.env.REDIS_URL);
 client.once('ready', function () {
 
     // Flush Redis DB
-    // client.flushdb();
+    //client.flushdb();
     client.get('chat_users', function (err, reply) {
         if (reply) {
             chatters = JSON.parse(reply);
@@ -77,7 +77,7 @@ app.post('/leave', function (req, res) {
 });
 
 app.post('/send_message', function (req, res) {
-    var room = req.body.username;
+    var room = req.body.room;
     var username = req.body.username;
     var message = req.body.message;
     var date = new Date().toUTCString()
