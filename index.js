@@ -11,7 +11,7 @@ client = redis.createClient(process.env.REDIS_URL);
 client.once('ready', function () {
 
     // Flush Redis DB
-    //client.flushdb();
+    client.flushdb();
     client.get('chat_users', function (err, reply) {
         if (reply) {
             chatters = JSON.parse(reply);
