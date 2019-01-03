@@ -20,7 +20,8 @@ client.once('ready', function () {
 
     client.get('chat_app_messages', function (err, reply) {
         if (reply) {
-            chat_messages = JSON.parse(reply);
+            messages = JSON.parse(reply)
+            chat_messages = messages.slice(messages.length-20,messages.length)
         }
     });
 });
